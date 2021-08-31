@@ -60,18 +60,8 @@
 			return;
 		}
 
-		if (login === correctUser && password !== correctPass) {
-			ShowError("Incorrect password!");
-			return;
-		}
-
-		if (login !== correctUser && password === correctPass) {
-			ShowError("Incorrect user name!");
-			return;
-		}
-
-		if (login !== correctUser && password !== correctPass) {
-			ShowError("'" + login + "' user doesn't exist!");
+		if (login !== correctUser || password !== correctPass) {
+            ShowError("Incorrect username or password!");
 			return;
 		}
     }
