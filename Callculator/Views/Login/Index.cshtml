@@ -24,9 +24,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="right" style="width: 100px" id="buttons">
-						@*<button onclick="RemindPassword()" title="remind" id="remindBtn">Remind password</button>*@
-					</td>
+                    <td colspan="2" align="right" style="width: 100px" id="buttons"/>
 				</tr>
 				<tr>
 					<th style="color: red" id="errorMessage" colspan="3"></th>
@@ -87,7 +85,7 @@
                 '<button onclick="Login()" title="Login" id="loginBtn">Login</button>');
 
             document.getElementById('buttons').insertAdjacentHTML('beforeEnd',
-	            '<button onclick="RemindPassword()" title="remind" id="remindBtn" style="display:none">Remind pasword</button>');
+	            '<button onclick="RemindPassword()" title="remind" id="remindBtn" style="display:none">Remind password</button>');
 
             sleep(500).then(() => document.getElementById('remindBtn').style.display = "initial");
 		});
