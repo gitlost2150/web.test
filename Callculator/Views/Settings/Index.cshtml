@@ -47,10 +47,27 @@
 			</table>
 
 			<div align="center">
-				<button onclick="alert('Changes are saved!'); window.location = '@Url.Action("Index", "Deposit")';" title="Save">Save</button>
-				<button onclick="window.location = '@Url.Action("Index", "Deposit")'" title="Save">Cancel</button>
+				<button onclick="alert('Changes are saved!'); window.location = '@Url.Action("Index", "Deposit")';" title="Save" id="save">Save</button>
+				<button onclick="window.location = '@Url.Action("Index", "Deposit")'" title="Save" id="cancel">Cancel</button>
 			</div>
 		</div>
 	</div>
+
+	<script>
+		function sleep (time) {
+			return new Promise((resolve) => setTimeout(resolve, time));
+		}
+
+		function show(id) { document.getElementById(id).style.display = "initial"; }
+        function hide(id) { document.getElementById(id).style.display = "none"; }
+
+		hide('save');
+		hide('cancel');
+
+		sleep(500).then(() => {
+			show('save');
+			sleep(500).then(() => show('cancel'));
+		});
+	</script>
 </body>
 </html>
