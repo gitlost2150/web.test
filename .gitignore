@@ -2,4 +2,7 @@
 .vs/*
 Callculator/obj/*
 Callculator/bin/*
+CallculatorTests/CallculatorTests/bin/*
+CallculatorTests/CallculatorTests/obj/*
+CallculatorTests/.vs/*
 packages/*

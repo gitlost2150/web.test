@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{8C87002A-3AC9-4F21-A1C0-4B979724BFC4}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CalculatorTests" expanded="True">
+            <Node name="CalculatorTests" expanded="True">
+              <Node name="LoginPageTest.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="CalculatorTests" expanded="True">
+            <Node name="CalculatorTests" expanded="True">
+              <Node name="CalculatorTests" expanded="True">
+                <Node name="LoginPageTest" expanded="True">
+                  <Node name="NegativeLoginTest(&quot;test&quot;,&quot;newyork&quot;,&quot;Incorrect user name or password!&quot;)" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.CalculatorTests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
