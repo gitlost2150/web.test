@@ -33,29 +33,89 @@ namespace CalculatorTests
             driver.Quit();
         }
 
-        [Test]
-        public void Test1()
+        //[Test]
+        //public void Test1()
+        //{
+        //    // arrange
+        //    IWebElement amount = driver.FindElement(By.Id("amount"));
+        //    IWebElement percent = driver.FindElement(By.Id("percent"));
+        //    IWebElement term = driver.FindElement(By.Id("term"));
+        //    IWebElement d365 = driver.FindElement(By.Id("d365"));
+
+        //    // act
+        //    amount.SendKeys("1000");
+        //    percent.SendKeys("10");
+        //    term.SendKeys("365");
+        //    d365.Click();
+
+        //    // assert
+        //    string actualIncome = driver.FindElement(By.Id("income")).GetAttribute("value");
+        //    string actualInterest = driver.FindElement(By.Id("interest")).GetAttribute("value");
+        //    string expectedIncome = "1100.00";
+        //    string expectedInterest = "100.00";
+        //    Assert.AreEqual(expectedIncome, actualIncome);
+        //    Assert.AreEqual(expectedInterest, actualInterest);
+
+        //}
+
+
+        [TestCase("", "", "")]
+        [TestCase("0", "0", "0")]
+        [TestCase("0", "10", "365")]
+        [TestCase("0", "0", "365")]
+        public void NegativeDepositTest(string depositAmount, string roi, string investmentTerm)
         {
             // arrange
             IWebElement amount = driver.FindElement(By.Id("amount"));
             IWebElement percent = driver.FindElement(By.Id("percent"));
             IWebElement term = driver.FindElement(By.Id("term"));
             IWebElement d365 = driver.FindElement(By.Id("d365"));
+            //IWebElement d360 = driver.FindElement(By.Id("d360"));
 
-            // act
-            amount.SendKeys("1000");
-            percent.SendKeys("10");
-            term.SendKeys("365");
+        // act
+        amount.SendKeys(depositAmount);
+            percent.SendKeys(roi);
+            term.SendKeys(investmentTerm);
             d365.Click();
 
             // assert
+            string expectedIncome = "0.00";
+            string expectedInterest = "0.00";
             string actualIncome = driver.FindElement(By.Id("income")).GetAttribute("value");
             string actualInterest = driver.FindElement(By.Id("interest")).GetAttribute("value");
-            string expectedIncome = "1100.00";
-            string expectedInterest = "100.00";
+            
             Assert.AreEqual(expectedIncome, actualIncome);
             Assert.AreEqual(expectedInterest, actualInterest);
-
         }
+
+
+        [TestCase("1000", "0", "0")]
+        [TestCase("1000", "10", "0")]
+        [TestCase("1000", "0", "365")]
+        public void NoInterestDepositTest(string depositAmount, string roi, string investmentTerm)
+        {
+            // arrange
+            IWebElement amount = driver.FindElement(By.Id("amount"));
+            IWebElement percent = driver.FindElement(By.Id("percent"));
+            IWebElement term = driver.FindElement(By.Id("term"));
+            IWebElement d365 = driver.FindElement(By.Id("d365"));
+            //IWebElement d360 = driver.FindElement(By.Id("d360"));
+
+            // act
+            amount.SendKeys(depositAmount);
+            percent.SendKeys(roi);
+            term.SendKeys(investmentTerm);
+            d365.Click();
+
+            // assert
+            string expectedIncome = "1000.00";
+            string expectedInterest = "0.00";
+            string actualIncome = driver.FindElement(By.Id("income")).GetAttribute("value");
+            string actualInterest = driver.FindElement(By.Id("interest")).GetAttribute("value");
+
+            Assert.AreEqual(expectedIncome, actualIncome);
+            Assert.AreEqual(expectedInterest, actualInterest);
+        }
+
     }
 }
