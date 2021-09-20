@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td>Investment term: *</td>
-					<td colspan="2"><input id="term" oninput="VerifyNumber('term', 0, 365); Calculate()"/></td>
+					<td colspan="2"><input id="term" oninput="VerifyInvestmentTerm(); Calculate()"/></td>
 				</tr>
 				<tr>
 					<td>Start date:</td>
@@ -77,6 +77,11 @@
 
 		return [(dd > 9 ? '' : '0') + dd, (mm > 9 ? '' : '0') + mm, this.getFullYear()].join('/');
 	};
+
+	VerifyInvestmentTerm = function () {
+        var max = document.getElementById('d360').checked ? 360 : 365;
+        VerifyNumber('term', 0, max);
+    }
 
 	VerifyNumber = function (id, min, max) {
 		var value = Number(document.getElementById(id).value);
