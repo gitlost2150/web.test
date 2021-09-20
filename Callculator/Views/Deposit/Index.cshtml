@@ -156,6 +156,10 @@
 	Calculate = function (id) {
 		if (id !== undefined) { document.getElementById(id).checked = false; }
 
+		if (!document.getElementById('d360').checked && !document.getElementById('d365').checked) {
+            return;
+        }
+
 		var amount = Number(document.getElementById('amount').value);
 		var days = Number(document.getElementById('term').value);
 		var percent = Number(document.getElementById('percent').value);
