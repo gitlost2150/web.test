@@ -45,8 +45,8 @@ namespace CalculatorTests
             IWebElement term = driver.FindElement(By.Id("term"));
             IWebElement d365 = driver.FindElement(By.Id("d365"));
 
-        // act
-        amount.SendKeys(depositAmount);
+            // act
+            amount.SendKeys(depositAmount);
             percent.SendKeys(roi);
             term.SendKeys(investmentTerm);
             d365.Click();
@@ -56,11 +56,10 @@ namespace CalculatorTests
             string expectedInterest = "0.00";
             string actualIncome = driver.FindElement(By.Id("income")).GetAttribute("value");
             string actualInterest = driver.FindElement(By.Id("interest")).GetAttribute("value");
-            
+
             Assert.AreEqual(expectedIncome, actualIncome);
             Assert.AreEqual(expectedInterest, actualInterest);
         }
-
 
         [TestCase("1000", "0", "0")]
         [TestCase("1000", "10", "0")]
@@ -89,21 +88,21 @@ namespace CalculatorTests
             Assert.AreEqual(expectedInterest, actualInterest);
         }
 
-
         [TestCase("1000", "10", "365")]
+        [TestCase("1000", "10", "360")]
         public void PositiveDepositTest_365(string depositAmount, string roi, string investmentTerm)
         {
             // arrange
             IWebElement amount = driver.FindElement(By.Id("amount"));
             IWebElement percent = driver.FindElement(By.Id("percent"));
             IWebElement term = driver.FindElement(By.Id("term"));
-            IWebElement d365 = driver.FindElement(By.Id("d365"));
+            IWebElement finYear = driver.FindElement(By.Id("d" + investmentTerm));
 
             // act
             amount.SendKeys(depositAmount);
             percent.SendKeys(roi);
             term.SendKeys(investmentTerm);
-            d365.Click();
+            finYear.Click();
 
             // assert
             string expectedIncome = "1100.00";
@@ -115,31 +114,6 @@ namespace CalculatorTests
             Assert.AreEqual(expectedInterest, actualInterest);
         }
 
-
-        [TestCase("1000", "10", "360")]
-        public void PositiveDepositTest_360(string depositAmount, string roi, string investmentTerm)
-        {
-            // arrange
-            IWebElement amount = driver.FindElement(By.Id("amount"));
-            IWebElement percent = driver.FindElement(By.Id("percent"));
-            IWebElement term = driver.FindElement(By.Id("term"));
-            IWebElement d360 = driver.FindElement(By.Id("d360"));
-
-            // act
-            amount.SendKeys(depositAmount);
-            percent.SendKeys(roi);
-            term.SendKeys(investmentTerm);
-            d360.Click();
-
-            // assert
-            string expectedIncome = "1100.00";
-            string expectedInterest = "100.00";
-            string actualIncome = driver.FindElement(By.Id("income")).GetAttribute("value");
-            string actualInterest = driver.FindElement(By.Id("interest")).GetAttribute("value");
-
-            Assert.AreEqual(expectedIncome, actualIncome);
-            Assert.AreEqual(expectedInterest, actualInterest);
-        }
 
         [TestCase("-", "0")]
         [TestCase("0", "0")]
@@ -151,14 +125,12 @@ namespace CalculatorTests
         {
             // arrange
             IWebElement amount = driver.FindElement(By.Id("amount"));
-            
 
             // act
             amount.SendKeys(depositAmount);
             string amountValue = driver.FindElement(By.Id("amount")).GetAttribute("value");
 
             // assert
-
             Assert.AreEqual(expectedAmount, amountValue);
         }
 
@@ -173,13 +145,11 @@ namespace CalculatorTests
             // arrange
             IWebElement amount = driver.FindElement(By.Id("percent"));
 
-
             // act
             amount.SendKeys(percentRange);
             string percentValue = driver.FindElement(By.Id("percent")).GetAttribute("value");
 
             // assert
-
             Assert.AreEqual(expectedPercent, percentValue);
         }
 
@@ -193,15 +163,12 @@ namespace CalculatorTests
         {
             // arrange
             IWebElement amount = driver.FindElement(By.Id("term"));
-        
-
 
             // act
             amount.SendKeys(termRange);
             string termValue = driver.FindElement(By.Id("term")).GetAttribute("value");
 
             // assert
-
             Assert.AreEqual(expectedTerm, termValue);
         }
 
@@ -217,17 +184,126 @@ namespace CalculatorTests
             IWebElement amount = driver.FindElement(By.Id("term"));
             IWebElement d360 = driver.FindElement(By.Id("d360"));
 
-
             // act
             d360.Click();
             amount.SendKeys(termRange);
             string termValue = driver.FindElement(By.Id("term")).GetAttribute("value");
-
+            
             // assert
-
             Assert.AreEqual(expectedTerm, termValue);
         }
 
+        [TestCase("Deposit Amount *")]
+        public void DepositAmountTitle(string expectedDepositTitle)
+        {
+            // act
+            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[1]/td[1]")).GetAttribute("outerText");
 
+            // assert
+            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
+        }
+
+        [TestCase("Rate of interest: *")]
+        public void InterestFieldTitle(string expectedDepositTitle)
+        {
+            // act
+            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[2]/td[1]")).GetAttribute("outerText");
+
+            // assert
+            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
+        }
+
+        [TestCase("Investment term: *")]
+        public void TermFieldTitle(string expectedDepositTitle)
+        {
+            // act
+            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[3]/td[1]")).GetAttribute("outerText");
+
+            // assert
+            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
+        }
+
+        [TestCase("Start date:")]
+        public void DateFieldTitle(string expectedDepositTitle)
+        {
+            // act
+            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[4]/td[1]")).GetAttribute("outerText");
+
+            // assert
+            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
+        }
+
+        [TestCase("Financial year: *")]
+        public void FinYearFieldTitle(string expectedDepositTitle)
+        {
+            // act
+            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[5]/td[1]")).GetAttribute("outerText");
+
+            // assert
+            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
+        }
+
+        [TestCase("Income:")]
+        public void IncomeFieldTitle(string expectedDepositTitle)
+        {
+            // act
+            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[6]/th[1]")).GetAttribute("outerText");
+
+            // assert
+            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
+        }
+
+        [TestCase("Interest earned:")]
+        public void InterestEarnedFieldTitle(string expectedDepositTitle)
+        {
+            // act
+            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[7]/th[1]")).GetAttribute("outerText");
+
+            // assert
+            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
+        }
+
+        [TestCase("End date:")]
+        public void EndDateFieldTitle(string expectedDepositTitle)
+        {
+            // act
+            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[8]/th[1]")).GetAttribute("outerText");
+
+            // assert
+            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
+        }
+        [TestCase("* - mandatory fields")]
+        public void MandatoryFieldTitle(string expectedDepositTitle)
+        {
+            // act
+            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[9]/td")).GetAttribute("outerText");
+
+            // assert
+            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
+        }
+
+        [TestCase("1000", "10", "365")]
+        public void NonSelectedCheckBoxFinancialYearTest(string depositAmount, string roi, string investmentTerm)
+        {
+            // arrange
+            IWebElement amount = driver.FindElement(By.Id("amount"));
+            IWebElement percent = driver.FindElement(By.Id("percent"));
+            IWebElement term = driver.FindElement(By.Id("term"));
+            IWebElement d365 = driver.FindElement(By.Id("d365"));
+
+            // act
+            amount.SendKeys(depositAmount);
+            percent.SendKeys(roi);
+            term.SendKeys(investmentTerm);
+
+            // assert
+            string expectedIncome = "";
+            string expectedInterest = "";
+            string actualIncome = driver.FindElement(By.Id("income")).GetAttribute("value");
+            string actualInterest = driver.FindElement(By.Id("interest")).GetAttribute("value");
+
+            Assert.AreEqual(expectedIncome, actualIncome);
+            Assert.AreEqual(expectedInterest, actualInterest);
+        }
     }
 }
