@@ -193,90 +193,19 @@ namespace CalculatorTests
             Assert.AreEqual(expectedTerm, termValue);
         }
 
-        [TestCase("Deposit Amount *")]
-        public void DepositAmountTitle(string expectedDepositTitle)
+        [TestCase("Deposit Amount *", "/html/body/div/div/table/tbody/tr[1]/td[1]")]
+        [TestCase("Rate of interest: *", "/html/body/div/div/table/tbody/tr[2]/td[1]")]
+        [TestCase("Investment term: *", "/html/body/div/div/table/tbody/tr[3]/td[1]")]
+        [TestCase("Start date:", "/html/body/div/div/table/tbody/tr[4]/td[1]")]
+        [TestCase("Financial year: *", "/html/body/div/div/table/tbody/tr[5]/td[1]")]
+        [TestCase("Income:", "/html/body/div/div/table/tbody/tr[6]/th[1]")]
+        [TestCase("Interest earned:", "/html/body/div/div/table/tbody/tr[7]/th[1]")]
+        [TestCase("End date:", "/html/body/div/div/table/tbody/tr[8]/th[1]")]
+        [TestCase("* - mandatory fields", "/html/body/div/div/table/tbody/tr[9]/td")]
+        public void MandatoryFieldsTitle(string expectedDepositTitle, string xpathVar)
         {
             // act
-            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[1]/td[1]")).GetAttribute("outerText");
-
-            // assert
-            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
-        }
-
-        [TestCase("Rate of interest: *")]
-        public void InterestFieldTitle(string expectedDepositTitle)
-        {
-            // act
-            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[2]/td[1]")).GetAttribute("outerText");
-
-            // assert
-            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
-        }
-
-        [TestCase("Investment term: *")]
-        public void TermFieldTitle(string expectedDepositTitle)
-        {
-            // act
-            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[3]/td[1]")).GetAttribute("outerText");
-
-            // assert
-            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
-        }
-
-        [TestCase("Start date:")]
-        public void DateFieldTitle(string expectedDepositTitle)
-        {
-            // act
-            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[4]/td[1]")).GetAttribute("outerText");
-
-            // assert
-            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
-        }
-
-        [TestCase("Financial year: *")]
-        public void FinYearFieldTitle(string expectedDepositTitle)
-        {
-            // act
-            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[5]/td[1]")).GetAttribute("outerText");
-
-            // assert
-            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
-        }
-
-        [TestCase("Income:")]
-        public void IncomeFieldTitle(string expectedDepositTitle)
-        {
-            // act
-            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[6]/th[1]")).GetAttribute("outerText");
-
-            // assert
-            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
-        }
-
-        [TestCase("Interest earned:")]
-        public void InterestEarnedFieldTitle(string expectedDepositTitle)
-        {
-            // act
-            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[7]/th[1]")).GetAttribute("outerText");
-
-            // assert
-            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
-        }
-
-        [TestCase("End date:")]
-        public void EndDateFieldTitle(string expectedDepositTitle)
-        {
-            // act
-            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[8]/th[1]")).GetAttribute("outerText");
-
-            // assert
-            Assert.AreEqual(expectedDepositTitle, actualDepositTitle);
-        }
-        [TestCase("* - mandatory fields")]
-        public void MandatoryFieldTitle(string expectedDepositTitle)
-        {
-            // act
-            string actualDepositTitle = driver.FindElement(By.XPath("/html/body/div/div/table/tbody/tr[9]/td")).GetAttribute("outerText");
+            string actualDepositTitle = driver.FindElement(By.XPath(xpathVar)).GetAttribute("outerText");
 
             // assert
             Assert.AreEqual(expectedDepositTitle, actualDepositTitle);

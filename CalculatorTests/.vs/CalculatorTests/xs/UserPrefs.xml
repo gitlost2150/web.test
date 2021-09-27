@@ -1,11 +1,15 @@
-﻿<Properties StartupConfiguration="{8C87002A-3AC9-4F21-A1C0-4B979724BFC4}|Default">
+﻿<Properties StartupConfiguration="{A403D3D3-0A7B-4ADB-9D4A-094616D1F52A}|Default">
   <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="CalculatorTests/LoginPageTest.cs" Line="48" Column="10" IsPinned="True" />
+      <File FileName="CalculatorTests/CalculatorTests.cs" Line="205" Column="41" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CalculatorTests" expanded="True">
             <Node name="CalculatorTests" expanded="True">
-              <Node name="LoginPageTest.cs" selected="True" />
+              <Node name="CalculatorTests.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -15,8 +19,17 @@
           <Node name="CalculatorTests" expanded="True">
             <Node name="CalculatorTests" expanded="True">
               <Node name="CalculatorTests" expanded="True">
-                <Node name="LoginPageTest" expanded="True">
-                  <Node name="NegativeLoginTest(&quot;test&quot;,&quot;newyork&quot;,&quot;Incorrect user name or password!&quot;)" selected="True" />
+                <Node name="CalculatorTests" expanded="True">
+                  <Node name="MandatoryFieldsTitle(&quot;* - mandatory fields&quot;,&quot;/html/body/div/div/table/tbody/tr[9]/td&quot;)" selected="True" />
+                  <Node name="MandatoryFieldsTitle(&quot;Deposit Amount *&quot;,&quot;/html/body/div/div/table/tbody/tr[1]/td[1]&quot;)" selected="True" />
+                  <Node name="MandatoryFieldsTitle(&quot;End date:&quot;,&quot;/html/body/div/div/table/tbody/tr[8]/th[1]&quot;)" selected="True" />
+                  <Node name="MandatoryFieldsTitle(&quot;Financial year: *&quot;,&quot;/html/body/div/div/table/tbody/tr[5]/td[1]&quot;)" selected="True" />
+                  <Node name="MandatoryFieldsTitle(&quot;Income:&quot;,&quot;/html/body/div/div/table/tbody/tr[6]/th[1]&quot;)" selected="True" />
+                  <Node name="MandatoryFieldsTitle(&quot;Interest earned:&quot;,&quot;/html/body/div/div/table/tbody/tr[7]/th[1]&quot;)" selected="True" />
+                  <Node name="MandatoryFieldsTitle(&quot;Investment term: *&quot;,&quot;/html/body/div/div/table/tbody/tr[3]/td[1]&quot;)" selected="True" />
+                  <Node name="MandatoryFieldsTitle(&quot;Rate of interest: *&quot;,&quot;/html/body/div/div/table/tbody/tr[2]/td[1]&quot;)" selected="True" />
+                  <Node name="MandatoryFieldsTitle(&quot;Start date:&quot;,&quot;/html/body/div/div/table/tbody/tr[4]/td[1]&quot;)" selected="True" />
+                  <Node name="MandatoryFieldTitle(&quot;* - mandatory fields&quot;)" selected="True" />
                 </Node>
               </Node>
             </Node>
