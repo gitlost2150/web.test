@@ -193,7 +193,6 @@ namespace CalculatorTests
             Assert.AreEqual(expectedTerm, termValue);
         }
 
-        // test comment
         [TestCase("Deposit Amount *", "/html/body/div/div/table/tbody/tr[1]/td[1]")]
         [TestCase("Rate of interest: *", "/html/body/div/div/table/tbody/tr[2]/td[1]")]
         [TestCase("Investment term: *", "/html/body/div/div/table/tbody/tr[3]/td[1]")]
