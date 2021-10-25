@@ -12,21 +12,21 @@
 
 			<table>
 				<tr>
-					<td>Deposit Ammount *</td>
+					<td>Deposit Amount *</td>
 					<td><input id="amount" oninput="VerifyNumber('amount', 0, 100000); Calculate()"></input></td>
 					<td>$</td>
 				</tr>
 				<tr>
-					<td>Rate of intereset: *</td>
+					<td>Rate of interest: *</td>
 					<td><input id="percent" oninput="VerifyNumber('percent', 0, 100); Calculate()"></input></td>
 					<td>%</td>
 				</tr>
 				<tr>
-					<td>Investment Term: *</td>
-					<td colspan="2"><input id="term" oninput="VerifyNumber('term', 0, 365); Calculate()"/></td>
+					<td>Investment term: *</td>
+					<td colspan="2"><input id="term" oninput="VerifyInvestmentTerm(); Calculate()"/></td>
 				</tr>
 				<tr>
-					<td>Start date: *</td>
+					<td>Start date:</td>
 					<td colspan="2">
 						<select id="day" onchange="CalculateDate()"></select>
 						<select id="month" onchange="ResetMonth(); CalculateDate();">
@@ -52,15 +52,15 @@
 					<td><input type="radio" id="d360" onchange="Calculate('d365')">360 days</input></td>
 				</tr>
 				<tr>
-					<th align="left">Income: *</th>
+					<th align="left">Income:</th>
 					<th><input id="income" readonly /></th>
 				</tr>
 				<tr>
-					<th aalign="left">interest earned: *</th>
+					<th align="left">Interest earned:</th>
 					<th><input id="interest" readonly /></th>
 				</tr>
 				<tr>
-					<th align="left">end date: *</th>
+					<th align="left">End date:</th>
 					<th><input id="endDate" readonly /></th>
 				</tr>
 				<tr><td colspan="3">* - mandatory fields</td></tr>
@@ -77,6 +77,11 @@
 
 		return [(dd > 9 ? '' : '0') + dd, (mm > 9 ? '' : '0') + mm, this.getFullYear()].join('/');
 	};
+
+	VerifyInvestmentTerm = function () {
+        var max = document.getElementById('d360').checked ? 360 : 365;
+        VerifyNumber('term', 0, max);
+    }
 
 	VerifyNumber = function (id, min, max) {
 		var value = Number(document.getElementById(id).value);
@@ -155,6 +160,10 @@
 
 	Calculate = function (id) {
 		if (id !== undefined) { document.getElementById(id).checked = false; }
+
+		if (!document.getElementById('d360').checked && !document.getElementById('d365').checked) {
+            return;
+        }
 
 		var amount = Number(document.getElementById('amount').value);
 		var days = Number(document.getElementById('term').value);
